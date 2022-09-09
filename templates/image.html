@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+    {% block title%}
+    <title>ResiZer | Lis Foto</title>
+    {% endblock %}
+</head>
+    {% block menu %}
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    Resi<span style="font-style:italic;">Zer</span>
+                </h1>
+                <!-- if logo is image enable this
+    <a class="navbar-brand" href="#index.html">
+        <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+    </a> -->
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                    data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Akèy <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+{% endblock%}
+{% block body %}
+<body>
+<p>
+    <ul>
+    {% for l in l %}
+    {% if l.imagesubmit %}
+    <li> <img src="{{l.imagesubmit.url}}"> </li>
+    {% else %}
+    <li>pas de photo</li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+
+
+</p>
+<div class="file-upload" id="image">
+              <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+              <div class="image-upload-wrap">
+                <input class="file-upload-input" type='file' name="image" onchange="readURL(this);" accept="image/*" />
+                <div class="drag-text">
+                  <h3>Drag and drop a file or select add Image</h3>
+                </div>
+              </div>
+              <div class="file-upload-content">
+                <img class="file-upload-image" src="#" alt="your image" />
+                <div class="image-title-wrap">
+                  <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                </div>
+              </div>
+
+            </div>
+</body>
+{% endblock %}
+</html>
